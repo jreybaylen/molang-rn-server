@@ -1,0 +1,12 @@
+{
+    "watch": [
+        "controllers/*",
+        "middlewares/*",
+        "models/*",
+        "routes/*",
+        "scripts/*",
+        "utils/*"
+    ],
+    "ext": "ts",
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./scripts/main.ts"
+}
