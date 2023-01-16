@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser'
 
 import authRouter from '@routes/auth'
 import userRouter from '@routes/user'
+import scoreRouter from '@routes/score'
 import recordRouter from '@routes/record'
 
 const app = express()
@@ -26,6 +27,7 @@ app.use(
 )
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
+app.use('/score', scoreRouter)
 app.use('/record', recordRouter)
 
 mongoose
