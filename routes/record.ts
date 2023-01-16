@@ -5,8 +5,8 @@ import { recordQuiz } from '@controllers/record'
 
 const recordRouter = Router()
 
-recordRouter.get(
-    '/',
+recordRouter.post(
+    '/:userId',
     verifyToken,
     recordQuiz
 )
