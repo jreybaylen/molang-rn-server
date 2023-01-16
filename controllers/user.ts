@@ -3,14 +3,20 @@ import type { Request, Response } from 'express'
 
 import UserModel from '@models/user'
 
+import type { UserProps } from '@models/user'
+
+type UserID = {
+    userId: string
+}
+
 export async function accountInformation (
-    req: Request,
+    req: Request<UserID>,
     res: Response
 ) {
     try {
-        res.status(200).json({
-            message: 'Account Information'
-        })
+        const user = await UserModel.findById(req.params.userId)
+
+        res.status(200).json(user)
     } catch (ERROR: any) {
         res.status(500).json({
             error: ERROR.message
@@ -19,7 +25,7 @@ export async function accountInformation (
 }
 
 export async function accountRegister (
-    req: Request,
+    req: Request<{}, {}, UserProps>,
     res: Response
 ) {
     try {

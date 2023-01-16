@@ -10,7 +10,7 @@ export function verifyToken (
     next: NextFunction
 ) {
     try {
-        const token = req.headers.Authorization as string
+        const token = req.headers.authorization as string
 
         if (!token) {
             res.status(403).send('Access Denied!')

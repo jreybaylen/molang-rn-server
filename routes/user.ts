@@ -1,5 +1,7 @@
 import { Router } from 'express'
 
+import { verifyToken } from '@middlewares/auth'
+
 import {
     accountInformation,
     accountRegister
@@ -8,7 +10,8 @@ import {
 const userRouter = Router()
 
 userRouter.get(
-    '/:id',
+    '/:userId',
+    verifyToken,
     accountInformation
 )
 
