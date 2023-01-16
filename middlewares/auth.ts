@@ -4,8 +4,12 @@ import type { MongooseError } from 'mongoose'
 import type { JwtPayload } from 'jsonwebtoken'
 import type { Request, Response, NextFunction } from 'express'
 
+type AdditonalRequest = Partial<{
+    user: JwtPayload | string
+}>
+
 export function verifyToken (
-    req: Request & Partial<{ user: JwtPayload | string }>,
+    req: Request & AdditonalRequest,
     res: Response,
     next: NextFunction
 ) {

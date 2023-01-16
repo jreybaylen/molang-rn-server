@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-export interface UserProps {
+export type UserProps = {
     name: string
     age: number
     birthDay: string
