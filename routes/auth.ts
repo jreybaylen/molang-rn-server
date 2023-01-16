@@ -4,7 +4,7 @@ import { accountValidator } from '@controllers/auth'
 
 const authRouter = Router()
 
-authRouter.get(
+authRouter.post(
     '/sign-in',
     accountValidator
 )

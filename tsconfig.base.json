@@ -6,8 +6,7 @@
             "@middlewares/*": [ "middlewares/*" ],
             "@models/*": [ "models/*" ],
             "@routes/*": [ "routes/*" ],
-            "@scripts/*": [ "scripts/*" ],
-            "@utils/*": [ "utils/*" ]
+            "@scripts/*": [ "scripts/*" ]
         }
     }
 }
