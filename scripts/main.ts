@@ -1,10 +1,12 @@
 import * as cors from 'cors'
-// import mongoose from 'mongoose'
+import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 
 import authRouter from '@routes/auth'
+import userRouter from '@routes/user'
+import leaderBoardRouter from '@routes/leader-board'
 
 const app = express()
 
@@ -23,29 +25,26 @@ app.use(
     })
 )
 app.use('/auth', authRouter)
+app.use('/user', userRouter)
+app.use('/leader-board', leaderBoardRouter)
 
-const PORT = process.env.PORT || 8080
+mongoose
+    .set('strictQuery', true)
+    .connect(
+        process.env.MONGO_DB as string
+    )
+    .then(
+        () => {
+            const PORT = process.env.PORT
 
-app.listen(PORT, () => {
-    console.log(`App is now running using http://localhost:${ PORT }`)
-})
-
-// mongoose
-//     .connect(
-//         process.env.MONGO_DB
-//     )
-//     .then(
-//         () => {
-//             const PORT = process.env.PORT || 2019
-
-//             console.log('App is now connected to MongoDB')
-//             app.listen(PORT, () => {
-//                 console.log(`App is now running using http://localhost:${ PORT }`)
-//             })
-//         }
-//     )
-//     .catch(
-//         (ERROR) => {
-//             console.error('ERROR: ', ERROR)
-//         }
-//     )
+            console.log('App is now connected to MongoDB')
+            app.listen(PORT, () => {
+                console.log(`App is now running using http://localhost:${ PORT }`)
+            })
+        }
+    )
+    .catch(
+        (ERROR) => {
+            console.error('ERROR: ', ERROR)
+        }
+    )
