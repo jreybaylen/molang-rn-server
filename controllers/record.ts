@@ -15,7 +15,27 @@ type RecordQuiz = {
     } & Omit<RecordProps, 'day' | 'userId'>
 }
 
-export async function recordQuiz (
+type Summary = {
+    day: string
+} & UserID
+
+export async function summary (
+    req: Request<Summary>,
+    res: Response
+) {
+    try {
+        const { userId, day } = req.params
+        const records = await RecordModel.find({ userId, day }).sort({ createdAt: 'desc' })
+
+        res.status(200).json(records)
+    } catch (ERROR: any) {
+        res.status(500).json({
+            error: ERROR.message
+        })
+    }
+}
+
+export async function quiz (
     req: Request<UserID, {}, RecordQuiz>,
     res: Response
 ) {
