@@ -9,7 +9,7 @@ type UserID = {
     userId: string
 }
 
-export async function accountInformation (
+export async function information (
     req: Request<UserID>,
     res: Response
 ) {
@@ -24,7 +24,7 @@ export async function accountInformation (
     }
 }
 
-export async function accountRegister (
+export async function registration (
     req: Request<{}, {}, UserProps>,
     res: Response
 ) {

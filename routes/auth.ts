@@ -1,12 +1,12 @@
 import { Router } from 'express'
 
-import { accountValidator } from '@controllers/auth'
+import { authentication } from '@controllers/auth'
 
 const authRouter = Router()
 
 authRouter.post(
-    '/sign-in',
-    accountValidator
+    '/',
+    authentication
 )
 
 export default authRouter

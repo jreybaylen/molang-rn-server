@@ -11,7 +11,7 @@ type SignInProps = {
     password: string
 }
 
-export async function accountValidator (
+export async function authentication (
     req: Request<{}, {}, SignInProps>,
     res: Response
 ) {
