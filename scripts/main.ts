@@ -6,7 +6,6 @@ import * as bodyParser from 'body-parser'
 
 import authRouter from '@routes/auth'
 import userRouter from '@routes/user'
-import leaderBoardRouter from '@routes/leader-board'
 
 const app = express()
 
@@ -26,7 +25,6 @@ app.use(
 )
 app.use('/auth', authRouter)
 app.use('/user', userRouter)
-app.use('/leader-board', leaderBoardRouter)
 
 mongoose
     .set('strictQuery', true)
